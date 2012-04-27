@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using WcfService;
+
 namespace Presentation.Controllers
 {
    [HandleError]
@@ -19,6 +21,14 @@ namespace Presentation.Controllers
       public ActionResult About()
       {
          return View();
+      }
+
+      public JsonResult ShowBedInfo()
+      {
+         BedDto retVal = new BedDto();
+         retVal.Id = 33;
+         
+         return Json(retVal, JsonRequestBehavior.AllowGet);
       }
    }
 }
