@@ -31,5 +31,43 @@ namespace WcfService
 
          return retVal;
       }
+
+      public LocationDto GetLocation(long locationId)
+      {
+         LocationDto retVal = new LocationDto();
+
+         retVal.Id = locationId;
+
+         return retVal;
+      }
+
+      public InvoiceDto GetInvoice(string sessionKey, string invoiceId)
+      {
+         InvoiceDto retVal = new InvoiceDto();
+
+         retVal.Id = Convert.ToInt64(invoiceId);
+
+         return retVal;
+      }
+
+      public CustomerDto GetCustomer(long customerId)
+      {
+         CustomerDto retVal = new CustomerDto();
+
+         retVal.Id = customerId;
+         retVal.Name = "Id-" + customerId;
+
+         return retVal;
+      }
+
+      public NoteDto GetNote(long noteId)
+      {
+         NoteDto retVal = new NoteDto();
+
+         retVal.Id = noteId;
+
+         return retVal;
+      }
+
    }
 }
