@@ -13,8 +13,6 @@ namespace Presentation.Controllers
    {
       public ActionResult Index()
       {
-         ViewData["Message"] = "Welcome to ASP.NET MVC!";
-
          return View();
       }
 
@@ -23,10 +21,10 @@ namespace Presentation.Controllers
          return View();
       }
 
-      public JsonResult ShowBedInfo()
+      public JsonResult ShowBedInfo(string bedId)
       {
          BedDto retVal = null;
-         long bedId = 44;
+         //long bedId = 44;
 
          string logMsg = String.Format("Home/ShowBedInfo for BedId: {0}", bedId);
          Logging.LogTrace(logMsg);

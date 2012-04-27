@@ -10,16 +10,14 @@
          $('#BedData').html('Please wait...');
          $.ajax({
             type: 'GET',
-            url: '/Home/ShowBedInfo',
+            url: '/Home/ShowBedInfo?bedId=35',
             success: ShowBed
          });
       });
 
       function ShowBed(data) {
-         //alert("we got here");
          $('#BedData').html(data.Id + ' - ' + data.Poc);
       }
-
 
    </script>
 </asp:Content>
