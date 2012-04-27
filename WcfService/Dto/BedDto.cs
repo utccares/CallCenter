@@ -13,6 +13,9 @@ namespace WcfService
       public long Id { get; set; }
       [DataMember(Order = 2)]
       public string Poc { get; set; }  // Point of Care
+      public string Room { get; set; }
+      public string Bed { get; set; }
+      public string Extension { get; set; }
    }
 }
       
