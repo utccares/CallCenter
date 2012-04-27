@@ -7,17 +7,17 @@
    <script type="text/javascript">
 
       $(function () {
-
+         $('#BedData').html('Please wait...');
          $.ajax({
             type: 'GET',
-            url: '/Home/ShowBed',
-            success: ShowBedInfo(data)
+            url: '/Home/ShowBedInfo',
+            success: ShowBed
          });
       });
 
-
-      function ShowBedInfo(data) {
-         alert("we got here");
+      function ShowBed(data) {
+         //alert("we got here");
+         $('#BedData').html(data.Id + ' - ' + data.Poc);
       }
 
 
@@ -25,9 +25,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
    <h2>
-      <%= Html.Encode(ViewData["Message"]) %></h2>
-   <p>
-      To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">
-         http://asp.net/mvc</a>.
-   </p>
+      Call Center</h2>
+   <div>Bed Data: <span id="BedData"></span></div>
 </asp:Content>
