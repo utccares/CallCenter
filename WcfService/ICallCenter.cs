@@ -14,25 +14,32 @@ namespace WcfService
    {
       [OperationContract]
       [WebGet(UriTemplate = "/{sessionKey}/bed/{bedId}.xml")]
-      BedDto GetBed_xml(string sessionKey, string bedId);
+      BedDto GetBed(string sessionKey, string bedId);
 
       [OperationContract]
-      [WebGet(UriTemplate = "/{sessionKey}/bed/{bedId}.json",
-         ResponseFormat = WebMessageFormat.Json)]
-      BedDto GetBed_json(string sessionKey, string bedId);
-      
-      [OperationContract]
-      [WebGet(UriTemplate = "/{sessionKey}/invoice/{invoiceId}")]
+      [WebGet(UriTemplate = "/{sessionKey}/invoice/{invoiceId}.xml")]
       InvoiceDto GetInvoice(string sessionKey, string invoiceId);
 
-      //CustomerDto GetCustomer(long customerId);
-      //LocationDto GetLocation(long locationId);
-      //NoteDto GetNote(long noteId);
-      //NoteListDto GetNoteList(long invoiceId);
-      //ServiceListDto GetServiceList(long locationId);
-      //PhoneListDto GetPhoneList(long invoiceId);
-      //EmailListDto GetEmailList(long invoiceId);
-      //AddressListDto GetAddressList(long invoiceId);
-      //RentalListDto GetRentalList(long invoiceID);
+      [OperationContract]
+      [WebGet(UriTemplate = "/{sessionKey}/customer/{customerId}.xml")]
+      CustomerDto GetCustomer(string sessionKey, string customerId);
+
+      [OperationContract]
+      [WebGet(UriTemplate = "/{sessionKey}/location/{locationId}.xml")]
+      LocationDto GetLocation(string sessionKey, string locationId);
+
+      [OperationContract]
+      [WebGet(UriTemplate = "/{sessionKey}/notes/{noteId}.xml")]
+      NoteDto GetNote(string sessionKey, string noteId);
+
+      //[OperationContract]
+      //[WebGet(UriTemplate = "/{sessionKey}/notes.xml")]
+      //NoteListDto ListNote(string sesionKey, string invoiceId);
+
+      //ServiceListDto ServiceList(long locationId);
+      //PhoneListDto PhoneList(long invoiceId);
+      //EmailListDto EmailList(long invoiceId);
+      //AddressListDto AddressList(long invoiceId);
+      //RentalListDto RentalList(long invoiceID);
   }
 }

@@ -8,35 +8,21 @@ using System.Text;
 
 namespace WcfService
 {
-   // Start the service and browse to http://<machine_name>:<port>/Service1/help to view the service's generated help page
+   // Start the service and browse to http://<machine_name>:<port>/CallCenter/help to view the service's generated help page
    // NOTE: By default, a new instance of the service is created for each call; change the InstanceContextMode to Single if you want
    // a single instance of the service to process all calls.	
    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
    public class CallCenter : ICallCenter
    {
-
-      public BedDto GetBed_xml(string sessionKey, string bedId)
-      { return GetBed("xml", sessionKey, bedId); }
-
-      public BedDto GetBed_json(string sessionKey, string bedId)
-      { return GetBed("json", sessionKey, bedId); }
-
-      private BedDto GetBed(string callType, string sessionKey, string bedId)
+      public BedDto GetBed(string sessionKey, string bedId)
       {
          BedDto retVal = new BedDto();
 
-         retVal.Id = Convert.ToInt64(bedId);
-         retVal.Poc = "Id-" + bedId;
-
-         return retVal;
-      }
-
-      public LocationDto GetLocation(long locationId)
-      {
-         LocationDto retVal = new LocationDto();
-
-         retVal.Id = locationId;
+         long id = 0;
+         long.TryParse(bedId, out id);
+         retVal.Id = id;
+         retVal.Poc = "Poc-" + bedId;
 
          return retVal;
       }
@@ -45,29 +31,55 @@ namespace WcfService
       {
          InvoiceDto retVal = new InvoiceDto();
 
-         retVal.Id = Convert.ToInt64(invoiceId);
+         long id = 0;
+         long.TryParse(invoiceId, out id);
+         retVal.Id = id;
 
          return retVal;
       }
 
-      public CustomerDto GetCustomer(long customerId)
+      public LocationDto GetLocation(string sessionKey, string locationId)
+      {
+         LocationDto retVal = new LocationDto();
+
+         long id = 0;
+         long.TryParse(locationId, out id);
+         retVal.Id = id;
+
+         return retVal;
+      }
+
+      public CustomerDto GetCustomer(string sessionKey, string customerId)
       {
          CustomerDto retVal = new CustomerDto();
 
-         retVal.Id = customerId;
-         retVal.Name = "Id-" + customerId;
+         long id = 0;
+         long.TryParse(customerId, out id);
+         retVal.Id = id;
+         retVal.Name = "Rush Inuit";
 
          return retVal;
       }
 
-      public NoteDto GetNote(long noteId)
+      public NoteDto GetNote(string sessionKey, string noteId)
       {
          NoteDto retVal = new NoteDto();
 
-         retVal.Id = noteId;
+         long id = 0;
+         long.TryParse(noteId, out id);
+         retVal.Id = id;
+         retVal.Text = "Note: " + DateTime.Now.ToString();
 
          return retVal;
       }
 
+
+      public NoteListDto ListNote(string sessionKey, string invoiceId)
+      {
+         NoteListDto retVal = new NoteListDto();
+         retVal.Add(GetNote(sessionKey, "1"));
+         retVal.Add(GetNote(sessionKey, "2"));
+         return retVal;
+      }
    }
 }
