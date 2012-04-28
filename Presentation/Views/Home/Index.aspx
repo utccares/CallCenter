@@ -10,13 +10,13 @@
          $('#BedData').html('Please wait...');
          $.ajax({
             type: 'GET',
-            url: '/Home/ShowBedInfo?bedId=35',
+            url: '/Home/ShowBedInfo?bedId=1',
             success: ShowBed
          });
       });
 
       function ShowBed(data) {
-         $('#BedData').html(data.Id + ' - ' + data.Poc);
+         $('#BedData').html(data.Poc + ' - ' + data.Room);
       }
 
    </script>

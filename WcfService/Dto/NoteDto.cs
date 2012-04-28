@@ -6,20 +6,17 @@ using System.Text;
 
 namespace WcfService
 {
+   // http://msdn.microsoft.com/en-us/library/aa347850.aspx
+   [CollectionDataContract(Name = "NoteListDto", Namespace = "")]
+   public class NoteListDto : List<NoteDto> { }
+
    [DataContract(Name = "NoteDto", Namespace = "")]
    public class NoteDto
    {
-      [DataMember(Order = 1)]
+      [DataMember]
       public long Id { get; set; }
 
-      [DataMember(Order = 2)]
+      [DataMember]
       public string Text { get; set; }
    }
-
-   // http://msdn.microsoft.com/en-us/library/aa347850.aspx
-   [CollectionDataContract(Name = "NoteListDto", Namespace = "")]
-   public class NoteListDto : List<NoteDto>
-   {
-   }
-
 }
